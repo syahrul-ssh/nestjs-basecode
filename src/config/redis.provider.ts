@@ -1,0 +1,17 @@
+import { Provider } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import Redis from 'ioredis';
+
+export const REDIS_CLIENT = Symbol('REDIS_CLIENT');
+
+export const redisProvider: Provider = {
+  provide: REDIS_CLIENT,
+  inject: [ConfigService],
+  useFactory: (configService: ConfigService) =>
+    new Redis({
+      host: configService.getOrThrow<string>('redis.host'),
+      port: configService.getOrThrow<number>('redis.port'),
+      password: configService.get<string>('redis.password'),
+      lazyConnect: true,
+    }),
+};
