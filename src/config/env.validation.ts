@@ -10,6 +10,7 @@ interface RequiredEnv {
   JWT_REFRESH_SECRET: string;
   REDIS_HOST: string;
   REDIS_PORT: string;
+  REDIS_PASSWORD?: string;
 }
 
 const requiredKeys: Array<keyof RequiredEnv> = [
@@ -24,6 +25,7 @@ const requiredKeys: Array<keyof RequiredEnv> = [
   'JWT_REFRESH_SECRET',
   'REDIS_HOST',
   'REDIS_PORT',
+  'REDIS_PASSWORD',
 ];
 
 export function validateEnv(
