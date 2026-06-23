@@ -15,4 +15,12 @@ export class AppController {
   getHealth() {
     return this.appService.getHealth();
   }
+
+  @Public()
+  @Get('hello')
+  @ApiOperation({ summary: 'Get application version' })
+  @ApiResponse({ status: 200, description: 'Application version retrieved' })
+  getVersion() {
+    return "Hello World! This is the version 1.0.0 of the application.";
+  }
 }
