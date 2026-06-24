@@ -23,7 +23,8 @@
     "migration:run:prod": "ts-node --esm ./node_modules/typeorm/cli.js migration:run -d dist/database/data-source.js",
     "migration:revert:prod": "typeorm migration:revert -d dist/database/data-source.js",
     "migration:create": "cross-env-shell ts-node --esm ./node_modules/typeorm/cli.js migration:create src/database/migrations/$npm_config_name",
-    "seed:run": "ts-node -r tsconfig-paths/register src/database/seeders/seed.ts"
+    "seed:run": "ts-node -r tsconfig-paths/register src/database/seeders/seed.ts",
+    "seed:run:prod": "ts-node -r tsconfig-paths/register dist/database/seeders/seed.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
